@@ -1,0 +1,36 @@
+
+<h1 style="display:inline;">Music Library</h1>
+<a style="display:inline;" href="user_page/{{ user.id }}">user</a>
+
+<form method="get">
+  <input type="text" name="q" placeholder="Search Albums and Songs">
+  <button type="submit">Search</button>
+</form>
+
+<h2 style="display:inline;">Albums</h2>
+<a style="display:inline;" href="create_album">create an Albums</a>
+{% if albums %}
+  <ul>
+    {% for album in albums %}
+      <li><a href="album_detail/{{ album.id }}"> {{album.album_title }} by {{ album.artist }}</a></li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No albums found</p>
+{% endif %}
+
+<div>
+    <h2 style="display:inline;">Songs</h2>
+    <a style="display:inline;" href="upload">upload songs</a>
+</div>
+
+{% if songs %}
+  <ul>
+    {% for song in songs %}
+        <li><a href="song_detail/{{song.id}}"> {{ song.title }} by {{ song.artist }}</a></li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No songs found</p>
+{% endif %}
+
